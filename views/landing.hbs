@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/img/favicon.ico" sizes="any" />
+  <link rel="icon" href="/img/icon-512.png" type="image/png" sizes="512x512" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  <title>Work as a Caregiver in Canada & the UK — Peterson Care Solutions</title>
+  <meta name="description" content="Peterson Care Solutions recruits qualified caregivers and support workers from Africa and Asia for home care employers in Canada and the UK." />
+
+  <!-- Open Graph: controls link preview on WhatsApp, Facebook, LinkedIn, Slack, iMessage -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://www.petersoncaresolutions.com/" />
+  <meta property="og:site_name"   content="Peterson Care Solutions" />
+  <meta property="og:title"       content="Work as a Caregiver in Canada &amp; the UK" />
+  <meta property="og:description" content="Peterson Care Solutions recruits qualified caregivers and support workers from Africa and Asia for home care employers in Canada and the UK." />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary" />
+  <meta name="twitter:title"       content="Work as a Caregiver in Canada &amp; the UK" />
+  <meta name="twitter:description" content="Peterson Care Solutions recruits qualified caregivers and support workers from Africa and Asia for home care employers in Canada and the UK." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#eff8ff',
+              100: '#dbeffe',
+              200: '#bfe3fd',
+              300: '#93d1fb',
+              400: '#60b6f7',
+              500: '#3b97f3',
+              600: '#2579e8',
+              700: '#1d62d5',
+              800: '#1e4fac',
+              900: '#1e4488',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; }
+
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    .progress-fill { transition: width 0.4s ease; }
+
+    .input-field {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.625rem;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
+      color: #1e293b;
+    }
+    .input-field:focus {
+      border-color: #3b97f3;
+      box-shadow: 0 0 0 3px rgba(59,151,243,0.12);
+    }
+    .input-field.error { border-color: #ef4444; }
+
+    .field-error {
+      color: #ef4444;
+      font-size: 0.8125rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+
+    .btn-primary {
+      background: #2579e8;
+      color: #fff;
+      border-radius: 0.625rem;
+      padding: 0.75rem 1.75rem;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+    }
+    .btn-primary:hover { background: #1d62d5; }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:disabled { background: #93c5fd; cursor: not-allowed; }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #475569;
+      border-radius: 0.625rem;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      border: none;
+    }
+    .btn-secondary:hover { background: #e2e8f0; }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 9999px;
+      padding: 0.375rem 0.875rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #fff;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.875rem;
+    }
+    .summary-row:last-child { border-bottom: none; }
+
+    .spinner {
+      width: 1.25rem; height: 1.25rem;
+      border: 2.5px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.5s ease forwards; }
+
+    .hero-bg {
+      position: relative;
+      /* dvh fills exactly the visible viewport, shrinking with the browser chrome */
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    /* Full-cover video */
+    .hero-bg__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+      /* Prevent interaction / tab-stop */
+      pointer-events: none;
+    }
+    /* Dim backdrop: dark at top, darker at bottom for text legibility */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(15,23,42,0.68) 0%,
+        rgba(15,23,42,0.78) 60%,
+        rgba(15,23,42,0.88) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-bg > *:not(.hero-bg__video) {
+      position: relative;
+      z-index: 2;
+    }
+
+    label { font-weight: 500; font-size: 0.875rem; color: #374151; }
+    label .req { color: #ef4444; }
+
+    /* ── Tom Select — match .input-field, no double border ── */
+    .ts-wrapper {
+      width: 100%;
+      /* Strip all default wrapper chrome */
+      border: none !important;
+      background: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+    .ts-control {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.625rem 0.875rem !important;
+      border: 1.5px solid #e2e8f0 !important;
+      border-radius: 0.625rem !important;
+      font-size: 0.9375rem !important;
+      background: #fff !important;
+      color: #1e293b !important;
+      box-shadow: none !important;
+      min-height: unset !important;
+      cursor: text;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .ts-wrapper.focus .ts-control {
+      border-color: #3b97f3 !important;
+      box-shadow: 0 0 0 3px rgba(59,151,243,0.12) !important;
+    }
+    .ts-wrapper.error .ts-control {
+      border-color: #ef4444 !important;
+    }
+    /* Search icon inside the control */
+    .ts-control .ts-search-icon {
+      flex-shrink: 0;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+    }
+    .ts-control input {
+      font-size: 0.9375rem !important;
+      color: #1e293b !important;
+      flex: 1;
+      border: none !important;
+      outline: none !important;
+      background: transparent !important;
+      padding: 0 !important;
+      min-width: 0;
+    }
+    .ts-control input::placeholder { color: #94a3b8; }
+    .ts-wrapper.has-value .ts-search-icon { display: none; }
+    /* Hide Tom Select's own dropdown arrow */
+    .ts-wrapper .ts-control::after,
+    .ts-wrapper .dropdown-input { display: none !important; }
+    .ts-dropdown {
+      border: 1.5px solid #e2e8f0 !important;
+      border-radius: 0.625rem !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+      margin-top: 4px !important;
+      font-size: 0.9375rem;
+    }
+    .ts-dropdown .option { padding: 0.5rem 0.875rem; display: flex; align-items: center; gap: 0.5rem; }
+    .ts-dropdown .option.selected { background: #eff8ff; color: #2579e8; font-weight: 600; }
+    .ts-dropdown .option:hover,
+    .ts-dropdown .option.active { background: #f1f5f9; color: #1e293b; }
+    .ts-dropdown .option img { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
+
+    /* ── Age range slider ── */
+    .age-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+    }
+    .age-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #2579e8;
+      border: 3px solid #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+      cursor: pointer;
+    }
+    .age-slider::-moz-range-thumb {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #2579e8;
+      border: 3px solid #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+      cursor: pointer;
+      border: none;
+    }
+    .age-slider::-moz-range-track { background: transparent; height: 6px; }
+
+    /* ── Custom dropdown ── */
+    .dropdown-menu { animation: dropIn 0.15s ease; }
+    @keyframes dropIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .dropdown-item.selected { background: #eff8ff; color: #2579e8; font-weight: 600; }
+    .dropdown-trigger[aria-expanded="true"] { border-color: #3b97f3; box-shadow: 0 0 0 3px rgba(59,151,243,0.12); }
+    .dropdown-trigger[aria-expanded="true"] .dropdown-chevron { transform: rotate(180deg); }
+
+    /* ── Phone field ── */
+    .phone-field {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.625rem;
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      overflow: visible;
+    }
+    .phone-field:focus-within {
+      border-color: #3b97f3;
+      box-shadow: 0 0 0 3px rgba(59,151,243,0.12);
+    }
+    .phone-field.error { border-color: #ef4444; }
+    .phone-dial-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.625rem 0.75rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9375rem;
+      color: #1e293b;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-family: inherit;
+    }
+    .phone-dial-btn:focus { outline: none; }
+    .phone-divider {
+      width: 1.5px;
+      align-self: stretch;
+      background: #e2e8f0;
+      flex-shrink: 0;
+      margin: -1.5px 0;
+    }
+    .phone-number-input {
+      flex: 1;
+      min-width: 0;
+      padding: 0.625rem 0.875rem;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 0.9375rem;
+      color: #1e293b;
+      font-family: inherit;
+    }
+    .phone-number-input::placeholder { color: #94a3b8; }
+
+    /* Dial-code dropdown list — matches other dropdowns */
+    .dial-menu {
+      position: fixed;
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.625rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      z-index: 9999;
+      overflow: hidden;
+      animation: dropIn 0.15s ease;
+    }
+    .dial-menu.hidden { display: none; }
+    .dial-search {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.5rem 0.875rem;
+      border: none;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.875rem;
+      color: #1e293b;
+      outline: none;
+      font-family: inherit;
+    }
+    .dial-search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.875rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .dial-search-wrap svg { flex-shrink: 0; color: #94a3b8; }
+    .dial-search {
+      flex: 1;
+      min-width: 0;
+      padding: 0;
+      border: none;
+      font-size: 0.875rem;
+      color: #1e293b;
+      outline: none;
+      font-family: inherit;
+      background: transparent;
+    }
+    .dial-list {
+      max-height: 240px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    .dial-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0.875rem;
+      font-size: 0.875rem;
+      color: #374151;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    .dial-item:hover, .dial-item.active { background: #f1f5f9; }
+    .dial-item.selected { background: #eff8ff; color: #2579e8; font-weight: 600; }
+    .dial-item img { width: 20px; height: 14px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
+    .dial-item-code { color: #64748b; font-size: 0.8125rem; margin-left: auto; }
+
+    /* Tom Select — occupation "Use …" create row */
+    .ts-dropdown .ts-occupation-create,
+    .ts-dropdown .create {
+      color: #2579e8;
+      font-size: 0.875rem;
+      padding: 0.5rem 0.875rem;
+      border-top: 1px solid #f1f5f9;
+      cursor: pointer;
+    }
+    .ts-dropdown .ts-occupation-create:hover { background: #eff8ff; }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+<!-- ─────────────────────────── HERO ─────────────────────────── -->
+<section class="hero-bg">
+  <video
+    class="hero-bg__video"
+    src="/video/hero.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-hidden="true"
+  ></video>
+  <div class="max-w-5xl mx-auto px-5 py-16 md:py-24 w-full">
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+
+      <!-- Text -->
+      <div class="flex-1 text-center md:text-left fade-up">
+        <div class="flex justify-center mb-4"><img src="/img/hero.png" alt="Peterson Care Solutions" class="h-14 w-auto" /></div>
+        <h1 class="text-white text-3xl md:text-5xl leading-tight mb-5" style="text-shadow:0 2px 8px rgba(0,0,0,0.4)">
+          Work as a Caregiver<br/>in Canada &amp; the UK
+        </h1>
+        <p class="text-white/90 text-base md:text-lg leading-relaxed mb-8 max-w-md mx-auto md:mx-0" style="text-shadow:0 1px 3px rgba(0,0,0,0.35)">
+          We connect skilled caregivers and support workers from Africa and Asia with verified home care employers in Canada and the United Kingdom.
+        </p>
+
+        <!-- Trust items -->
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-1 gap-y-1 mb-8">
+          <span class="text-white/90 text-sm font-medium">Verified Employers</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-point w-3 h-3 text-white/90 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" /></svg>
+          <span class="text-white/90 text-sm font-medium">Free Application</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-point w-3 h-3 text-white/90 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" /></svg>
+          <span class="text-white/90 text-sm font-medium">Visa Support Guidance</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-point w-3 h-3 text-white/90 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" /></svg>
+          <span class="text-white/90 text-sm font-medium">500+ Placements</span>
+        </div>
+
+        <a href="#apply" class="btn-primary block w-full text-center hover:-translate-y-0.5 transition-transform duration-200" style="background:#C9922A;" onmouseover="this.style.background='#b57e22'" onmouseout="this.style.background='#C9922A'">
+          Apply Now — It's Free
+        </a>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── FORM SECTION ─────────────────────────── -->
+<section id="apply" class="py-14 md:py-20 bg-white">
+  <div class="max-w-2xl mx-auto px-5">
+
+    <div class="text-center mb-10">
+      <h2 class="text-2xl md:text-3xl text-slate-800 mb-2">Start Your Application</h2>
+      <p class="text-slate-500 text-sm">Complete the form below — it takes under 5 minutes and is entirely free.</p>
+    </div>
+
+    <!-- Step indicators — above the form card -->
+    <div id="step-tracker" class="mb-8 px-4">
+      <div class="relative flex items-center justify-between">
+        <!-- Connector line: gray base -->
+        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-slate-200 z-0"></div>
+        <!-- Connector line: green fill (driven by JS) -->
+        <div id="step-line-fill" class="absolute left-0 top-1/2 -translate-y-1/2 h-0.5 bg-green-400 z-0" style="width:0%;transition:width 0.35s ease"></div>
+
+        <div class="step-indicator relative z-10" data-step="1">
+          <span class="step-dot flex items-center justify-center rounded-full text-white text-xs font-semibold bg-brand-500 shadow-sm">1</span>
+        </div>
+        <div class="step-indicator relative z-10" data-step="2">
+          <span class="step-dot flex items-center justify-center rounded-full bg-slate-200 text-slate-500 text-xs font-semibold">2</span>
+        </div>
+        <div class="step-indicator relative z-10" data-step="3">
+          <span class="step-dot flex items-center justify-center rounded-full bg-slate-200 text-slate-500 text-xs font-semibold">3</span>
+        </div>
+        <div class="step-indicator relative z-10" data-step="4">
+          <span class="step-dot flex items-center justify-center rounded-full bg-slate-200 text-slate-500 text-xs font-semibold">4</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form card -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
+
+      <form id="application-form" novalidate>
+        <div>
+
+          <!-- ── STEP 1: Personal ── -->
+          <div class="step-panel active" id="step-1">
+            <h3 class="text-lg text-slate-800 mb-5">Personal Information</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div class="sm:col-span-2">
+                <label for="full_name" class="block mb-1">Full Name <span class="req">*</span></label>
+                <input type="text" id="full_name" name="full_name" class="input-field" placeholder="e.g. Amara Osei" autocomplete="name" />
+                <p class="field-error" id="err-full_name">Please enter your full name.</p>
+              </div>
+
+              <div>
+                <label class="block mb-1">Gender <span class="req">*</span></label>
+                <input type="hidden" id="gender" name="gender" value="" />
+                {{> dropdown-menu
+                  triggerId="gender-trigger"
+                  menuId="gender-menu"
+                  hiddenId="gender"
+                  items=genderItems
+                  placeholder="Select gender"
+                }}
+                <p class="field-error" id="err-gender">Please select your gender.</p>
+              </div>
+
+
+              <div>
+                <label for="nationality" class="block mb-1">Nationality <span class="req">*</span></label>
+                <select id="nationality" name="nationality" class="input-field">
+                  <option value="">Select country</option>
+                  {{#each countries}}
+                  <option value="{{this.label}}" data-iso="{{this.isoCode}}">{{this.label}}</option>
+                  {{/each}}
+                </select>
+                <p class="field-error" id="err-nationality">Please select your nationality.</p>
+              </div>
+
+              <div>
+                <label for="current_country" class="block mb-1">Current Country <span class="req">*</span></label>
+                <select id="current_country" name="current_country" class="input-field">
+                  <option value="">Select country</option>
+                  {{#each countries}}
+                  <option value="{{this.label}}" data-iso="{{this.isoCode}}">{{this.label}}</option>
+                  {{/each}}
+                </select>
+                <p class="field-error" id="err-current_country">Please enter your current country.</p>
+              </div>
+
+              <div>
+                <label for="whatsapp-number" class="block mb-1">WhatsApp Number <span class="req">*</span></label>
+                <div class="phone-field" id="phone-field">
+                  <button type="button" class="phone-dial-btn" id="dial-btn" aria-haspopup="listbox" aria-expanded="false">
+                    <img id="dial-flag" src="https://flagcdn.com/20x15/ng.png" width="20" height="15" alt="" style="border-radius:2px;" />
+                    <span id="dial-code">+234</span>
+                    <svg class="w-3.5 h-3.5 text-slate-400 flex-shrink-0 transition-transform duration-200" id="dial-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                  </button>
+                  <div class="phone-divider"></div>
+                  <input type="tel" id="whatsapp-number" class="phone-number-input" placeholder="800 000 0000" autocomplete="tel" inputmode="numeric" />
+                </div>
+                <input type="hidden" id="whatsapp" name="whatsapp" />
+                <!-- Dial-code dropdown -->
+                <ul id="dial-menu" class="dial-menu hidden" role="listbox">
+                  <div class="dial-search-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg>
+                    <input type="text" class="dial-search" id="dial-search" placeholder="Search country…" autocomplete="off" />
+                  </div>
+                  <div class="dial-list" id="dial-list"></div>
+                </ul>
+                <p class="field-error" id="err-whatsapp">Please enter a valid WhatsApp number.</p>
+              </div>
+
+              <div>
+                <label for="email" class="block mb-1">Email Address <span class="req">*</span></label>
+                <input type="email" id="email" name="email" class="input-field" placeholder="you@example.com" autocomplete="email" />
+                <p class="field-error" id="err-email">Please enter a valid email address.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── STEP 2: Qualifications ── -->
+          <div class="step-panel" id="step-2">
+            <h3 class="text-lg text-slate-800 mb-5">Qualifications</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div class="sm:col-span-2">
+                <label class="block mb-1">Type of Caregiving Experience <span class="req">*</span></label>
+                <input type="hidden" id="caregiving_experience" name="caregiving_experience" value="" />
+                {{> dropdown-menu triggerId="caregiving-trigger" menuId="caregiving-menu" hiddenId="caregiving_experience" items=caregivingItems placeholder="Select type" }}
+                <p class="field-error" id="err-caregiving_experience">Please select your experience type.</p>
+              </div>
+
+              <div>
+                <label class="block mb-1">Years of Experience <span class="req">*</span></label>
+                <input type="hidden" id="years_experience" name="years_experience" value="" />
+                {{> dropdown-menu triggerId="years-trigger" menuId="years-menu" hiddenId="years_experience" items=yearsItems placeholder="Select years" }}
+                <p class="field-error" id="err-years_experience">Please select years of experience.</p>
+              </div>
+
+              <div>
+                <label for="current_occupation" class="block mb-1">Current Occupation</label>
+                <select id="current_occupation" name="current_occupation" class="input-field">
+                  <option value="">Search occupation…</option>
+                  {{#each occupationItems}}
+                  <option value="{{this.value}}">{{this.label}}</option>
+                  {{/each}}
+                </select>
+                <p class="text-slate-400 text-xs mt-1">Optional</p>
+              </div>
+
+              <div>
+                <label class="block mb-1">Highest Education Level <span class="req">*</span></label>
+                <input type="hidden" id="education_level" name="education_level" value="" />
+                {{> dropdown-menu triggerId="education-trigger" menuId="education-menu" hiddenId="education_level" items=educationItems placeholder="Select level" }}
+                <p class="field-error" id="err-education_level">Please select your education level.</p>
+              </div>
+
+              <div>
+                <label for="certification" class="block mb-1">Relevant Certification</label>
+                <input type="text" id="certification" name="certification" class="input-field" placeholder="e.g. HCA Certificate" />
+                <p class="text-slate-400 text-xs mt-1">Optional</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── STEP 3: Eligibility ── -->
+          <div class="step-panel" id="step-3">
+            <h3 class="text-lg text-slate-800 mb-5">Eligibility</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div class="sm:col-span-2">
+                <label class="block mb-1">Preferred Destination <span class="req">*</span></label>
+                <input type="hidden" id="preferred_destination" name="preferred_destination" value="" />
+                {{> dropdown-menu triggerId="destination-trigger" menuId="destination-menu" hiddenId="preferred_destination" items=destinationItems placeholder="Select destination" }}
+                <p class="field-error" id="err-preferred_destination">Please select your preferred destination.</p>
+              </div>
+
+              <div>
+                <label class="block mb-1">Do you have a valid passport? <span class="req">*</span></label>
+                <input type="hidden" id="has_passport" name="has_passport" value="" />
+                {{> dropdown-menu triggerId="passport-trigger" menuId="passport-menu" hiddenId="has_passport" items=passportItems placeholder="Select" }}
+                <p class="field-error" id="err-has_passport">Please indicate passport status.</p>
+              </div>
+
+              <div>
+                <label class="block mb-1">English Proficiency <span class="req">*</span></label>
+                <input type="hidden" id="english_proficiency" name="english_proficiency" value="" />
+                {{> dropdown-menu triggerId="english-trigger" menuId="english-menu" hiddenId="english_proficiency" items=englishItems placeholder="Select level" }}
+                <p class="field-error" id="err-english_proficiency">Please select your English level.</p>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label class="block mb-1">Previous Travel / Visa History</label>
+                <input type="hidden" id="travel_history" name="travel_history" value="" />
+                {{> dropdown-menu triggerId="travel-trigger" menuId="travel-menu" hiddenId="travel_history" items=travelItems placeholder="Select" }}
+                <p class="text-slate-400 text-xs mt-1">Optional but helpful</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ── STEP 4: Consent & Review ── -->
+          <div class="step-panel" id="step-4">
+            <h3 class="text-lg text-slate-800 mb-5">Review &amp; Consent</h3>
+
+            <!-- Summary -->
+            <div id="summary-box" class="mb-4 text-sm">
+              <!-- Populated by JS -->
+            </div>
+
+            <hr class="border-slate-200 mb-4" />
+
+            <div class="space-y-3 mb-6 text-sm text-slate-600 bg-brand-50 border border-brand-100 rounded-xl p-4">
+              <p class="font-medium text-brand-800">Before you submit, please read:</p>
+              <ul class="space-y-1.5 list-none">
+                <li class="flex gap-2"><span class="text-brand-500 font-bold">·</span> Your information is used solely for recruitment matching purposes.</li>
+                <li class="flex gap-2"><span class="text-brand-500 font-bold">·</span> Peterson Care Solutions will never sell your data to third parties.</li>
+                <li class="flex gap-2"><span class="text-brand-500 font-bold">·</span> A recruiter will contact you via WhatsApp or email within 3–5 business days.</li>
+                <li class="flex gap-2"><span class="text-brand-500 font-bold">·</span> Applying is completely free of charge.</li>
+              </ul>
+            </div>
+
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" id="consent-checkbox" name="consented" value="true" class="mt-0.5 w-4 h-4 accent-brand-600 flex-shrink-0" />
+              <span class="text-sm text-slate-600 leading-relaxed">
+                I confirm that the information provided is accurate and I consent to Peterson Care Solutions contacting me regarding caregiver opportunities in Canada and/or the United Kingdom. *
+              </span>
+            </label>
+            <p class="field-error" id="err-consented">You must agree to the consent statement.</p>
+            <input type="hidden" id="consented-hidden" name="consented" value="false" />
+          </div>
+
+        </div>
+
+        <!-- Form navigation -->
+        <div class="pt-6 pb-2 flex items-center gap-3">
+          <button type="button" id="btn-prev" class="btn-secondary flex-shrink-0" style="display:none;background:#1e293b;color:#fff;">
+            <span class="flex items-center justify-center gap-2 whitespace-nowrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0"/><path d="M5 12l4 4"/><path d="M5 12l4 -4"/></svg>
+              Back
+            </span>
+          </button>
+          <button type="button" id="btn-next" class="btn-primary flex-shrink-0 flex-grow">
+            <span class="flex items-center justify-center gap-2 whitespace-nowrap">
+              Continue
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0"/><path d="M15 16l4 -4"/><path d="M15 8l4 4"/></svg>
+            </span>
+          </button>
+          <button type="submit" id="btn-submit" class="btn-primary min-w-0 flex-shrink flex-grow" style="display:none">
+            <span class="flex items-center justify-center gap-2">
+              <span id="submit-label">Submit</span>
+              <span id="submit-spinner" class="spinner ml-1" style="display:none"></span>
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+
+    <!-- Error banner -->
+    <div id="error-banner" class="hidden mt-4 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm text-center"></div>
+
+  </div>
+</section>
+
+<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
+{{> footer}}
+
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+<script>
+  // Shared render helpers for Tom Select country fields
+  function renderCountryOption(data, escape) {
+    const iso = escape(data.iso || '');
+    const label = escape(data.text);
+    const flag = iso
+      ? `<img src="https://flagcdn.com/20x15/${iso}.png" width="20" height="15" alt="" loading="lazy" />`
+      : '';
+    return `<div>${flag} ${label}</div>`;
+  }
+
+  function renderCountryItem(data, escape) {
+    const iso = escape(data.iso || '');
+    const label = escape(data.text);
+    const flag = iso
+      ? `<img src="https://flagcdn.com/20x15/${iso}.png" width="20" height="15" alt="" style="display:inline;vertical-align:middle;margin-right:6px;border-radius:2px;" loading="lazy" />`
+      : '';
+    return `<div>${flag}${label}</div>`;
+  }
+
+  ['nationality', 'current_country', 'current_occupation'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // Build items array from <option> elements so Tom Select has the iso code
+    const options = Array.from(el.options).slice(1).map(function(opt) {
+      return { value: opt.value, text: opt.text, iso: opt.dataset.iso || '' };
+    });
+
+    const isOccupation = id === 'current_occupation';
+    new TomSelect(el, {
+      options: options,
+      items: el.value ? [el.value] : [],
+      valueField: 'value',
+      labelField: 'text',
+      searchField: 'text',
+      placeholder: isOccupation ? 'Search occupation…' : 'Search country…',
+      maxOptions: isOccupation ? null : 300,
+      create: isOccupation,
+      createOnBlur: false,
+      render: {
+        option: renderCountryOption,
+        item: renderCountryItem,
+        option_create: isOccupation ? function(data, escape) {
+          return '<div class="create ts-occupation-create"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M9 12h6"/><path d="M12 9v6"/></svg> Use \"' + escape(data.input) + '\"</div>';
+        } : null,
+        no_results: isOccupation ? function(data, escape) {
+          return '<div class="no-results" style="padding:0.5rem 0.875rem">No results found for “' + escape(data.input) + '”</div>';
+        } : null,
+      },
+      onInitialize: function() {
+        const icon = document.createElement('span');
+        icon.className = 'ts-search-icon';
+        icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg>';
+        this.control.prepend(icon);
+      },
+      onChange: function(val) {
+        const err = document.getElementById('err-' + id);
+        if (err) err.classList.remove('visible');
+        if (this.wrapper) {
+          this.wrapper.classList.remove('error');
+          this.wrapper.classList.toggle('has-value', !!val);
+        }
+      },
+    });
+  });
+</script>
+<script>
+(function () {
+  // Compact dial-code dataset: [iso2, dialCode, name]
+  const COUNTRIES = [
+    ['af','93','Afghanistan'],['al','355','Albania'],['dz','213','Algeria'],['ao','244','Angola'],
+    ['ar','54','Argentina'],['am','374','Armenia'],['au','61','Australia'],['at','43','Austria'],
+    ['az','994','Azerbaijan'],['bs','1242','Bahamas'],['bh','973','Bahrain'],['bd','880','Bangladesh'],
+    ['by','375','Belarus'],['be','32','Belgium'],['bz','501','Belize'],['bj','229','Benin'],
+    ['bt','975','Bhutan'],['bo','591','Bolivia'],['ba','387','Bosnia'],['bw','267','Botswana'],
+    ['br','55','Brazil'],['bn','673','Brunei'],['bg','359','Bulgaria'],['bf','226','Burkina Faso'],
+    ['bi','257','Burundi'],['kh','855','Cambodia'],['cm','237','Cameroon'],['ca','1','Canada'],
+    ['cv','238','Cape Verde'],['cf','236','Central African Republic'],['td','235','Chad'],
+    ['cl','56','Chile'],['cn','86','China'],['co','57','Colombia'],['km','269','Comoros'],
+    ['cg','242','Congo'],['cd','243','Congo (DRC)'],['cr','506','Costa Rica'],['hr','385','Croatia'],
+    ['cu','53','Cuba'],['cy','357','Cyprus'],['cz','420','Czech Republic'],['dk','45','Denmark'],
+    ['dj','253','Djibouti'],['do','1809','Dominican Republic'],['ec','593','Ecuador'],
+    ['eg','20','Egypt'],['sv','503','El Salvador'],['gq','240','Equatorial Guinea'],
+    ['er','291','Eritrea'],['ee','372','Estonia'],['sz','268','Eswatini'],['et','251','Ethiopia'],
+    ['fj','679','Fiji'],['fi','358','Finland'],['fr','33','France'],['ga','241','Gabon'],
+    ['gm','220','Gambia'],['ge','995','Georgia'],['de','49','Germany'],['gh','233','Ghana'],
+    ['gr','30','Greece'],['gt','502','Guatemala'],['gn','224','Guinea'],['gw','245','Guinea-Bissau'],
+    ['gy','592','Guyana'],['ht','509','Haiti'],['hn','504','Honduras'],['hu','36','Hungary'],
+    ['is','354','Iceland'],['in','91','India'],['id','62','Indonesia'],['ir','98','Iran'],
+    ['iq','964','Iraq'],['ie','353','Ireland'],['il','972','Israel'],['it','39','Italy'],
+    ['jm','1876','Jamaica'],['jp','81','Japan'],['jo','962','Jordan'],['kz','7','Kazakhstan'],
+    ['ke','254','Kenya'],['kw','965','Kuwait'],['kg','996','Kyrgyzstan'],['la','856','Laos'],
+    ['lv','371','Latvia'],['lb','961','Lebanon'],['ls','266','Lesotho'],['lr','231','Liberia'],
+    ['ly','218','Libya'],['lt','370','Lithuania'],['lu','352','Luxembourg'],['mg','261','Madagascar'],
+    ['mw','265','Malawi'],['my','60','Malaysia'],['mv','960','Maldives'],['ml','223','Mali'],
+    ['mt','356','Malta'],['mr','222','Mauritania'],['mu','230','Mauritius'],['mx','52','Mexico'],
+    ['md','373','Moldova'],['mn','976','Mongolia'],['me','382','Montenegro'],['ma','212','Morocco'],
+    ['mz','258','Mozambique'],['mm','95','Myanmar'],['na','264','Namibia'],['np','977','Nepal'],
+    ['nl','31','Netherlands'],['nz','64','New Zealand'],['ni','505','Nicaragua'],['ne','227','Niger'],
+    ['ng','234','Nigeria'],['no','47','Norway'],['om','968','Oman'],['pk','92','Pakistan'],
+    ['pa','507','Panama'],['pg','675','Papua New Guinea'],['py','595','Paraguay'],['pe','51','Peru'],
+    ['ph','63','Philippines'],['pl','48','Poland'],['pt','351','Portugal'],['qa','974','Qatar'],
+    ['ro','40','Romania'],['ru','7','Russia'],['rw','250','Rwanda'],['sa','966','Saudi Arabia'],
+    ['sn','221','Senegal'],['rs','381','Serbia'],['sl','232','Sierra Leone'],['sg','65','Singapore'],
+    ['sk','421','Slovakia'],['si','386','Slovenia'],['so','252','Somalia'],['za','27','South Africa'],
+    ['ss','211','South Sudan'],['es','34','Spain'],['lk','94','Sri Lanka'],['sd','249','Sudan'],
+    ['sr','597','Suriname'],['se','46','Sweden'],['ch','41','Switzerland'],['sy','963','Syria'],
+    ['tw','886','Taiwan'],['tj','992','Tajikistan'],['tz','255','Tanzania'],['th','66','Thailand'],
+    ['tl','670','Timor-Leste'],['tg','228','Togo'],['tt','1868','Trinidad and Tobago'],
+    ['tn','216','Tunisia'],['tr','90','Turkey'],['tm','993','Turkmenistan'],['ug','256','Uganda'],
+    ['ua','380','Ukraine'],['ae','971','United Arab Emirates'],['gb','44','United Kingdom'],
+    ['us','1','United States'],['uy','598','Uruguay'],['uz','998','Uzbekistan'],
+    ['ve','58','Venezuela'],['vn','84','Vietnam'],['ye','967','Yemen'],['zm','260','Zambia'],
+    ['zw','263','Zimbabwe'],
+  ];
+
+  let selected = COUNTRIES.find(c => c[0] === 'ng');
+  const dialBtn    = document.getElementById('dial-btn');
+  const dialFlag   = document.getElementById('dial-flag');
+  const dialCode   = document.getElementById('dial-code');
+  const dialChev   = document.getElementById('dial-chevron');
+  const dialMenu   = document.getElementById('dial-menu');
+  const dialSearch = document.getElementById('dial-search');
+  const dialList   = document.getElementById('dial-list');
+  const numberInp  = document.getElementById('whatsapp-number');
+  const hidden     = document.getElementById('whatsapp');
+  const phoneField = document.getElementById('phone-field');
+
+  function flagUrl(iso) {
+    return `https://flagcdn.com/20x15/${iso}.png`;
+  }
+
+  function syncHidden() {
+    const num = numberInp.value.replace(/\D/g, '');
+    hidden.value = num ? '+' + selected[1] + num : '';
+  }
+
+  function renderList(filter) {
+    const q = (filter || '').toLowerCase();
+    const items = COUNTRIES.filter(c =>
+      !q || c[2].toLowerCase().includes(q) || c[1].includes(q)
+    );
+    dialList.innerHTML = items.map(c => `
+      <li role="option" class="dial-item${c[0] === selected[0] ? ' selected' : ''}" data-iso="${c[0]}">
+        <img src="${flagUrl(c[0])}" width="20" height="14" alt="" loading="lazy" />
+        <span>${c[2]}</span>
+        <span class="dial-item-code">+${c[1]}</span>
+      </li>`).join('');
+  }
+
+  function openMenu() {
+    const r = phoneField.getBoundingClientRect();
+    dialMenu.style.top   = (r.bottom + 4) + 'px';
+    dialMenu.style.left  = r.left + 'px';
+    dialMenu.style.width = r.width + 'px';
+    dialMenu.classList.remove('hidden');
+    dialBtn.setAttribute('aria-expanded', 'true');
+    dialChev.style.transform = 'rotate(180deg)';
+    dialSearch.value = '';
+    renderList('');
+    dialSearch.focus();
+  }
+
+  function closeMenu() {
+    dialMenu.classList.add('hidden');
+    dialBtn.setAttribute('aria-expanded', 'false');
+    dialChev.style.transform = '';
+  }
+
+  function selectCountry(iso) {
+    selected = COUNTRIES.find(c => c[0] === iso) || selected;
+    dialFlag.src = flagUrl(selected[0]);
+    dialFlag.alt = selected[2];
+    dialCode.textContent = '+' + selected[1];
+    syncHidden();
+    closeMenu();
+  }
+
+  dialBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dialMenu.classList.contains('hidden') ? openMenu() : closeMenu();
+  });
+
+  dialSearch.addEventListener('input', () => renderList(dialSearch.value));
+
+  dialList.addEventListener('click', (e) => {
+    const item = e.target.closest('.dial-item');
+    if (item) selectCountry(item.dataset.iso);
+  });
+
+  numberInp.addEventListener('input', () => {
+    syncHidden();
+    // clear error on type
+    document.getElementById('err-whatsapp').classList.remove('visible');
+    phoneField.classList.remove('error');
+  });
+
+  // Reposition on scroll/resize
+  function reposition() {
+    if (!dialMenu.classList.contains('hidden')) {
+      const r = phoneField.getBoundingClientRect();
+      dialMenu.style.top  = (r.bottom + 4) + 'px';
+      dialMenu.style.left = r.left + 'px';
+    }
+  }
+  window.addEventListener('scroll', reposition, { passive: true });
+  window.addEventListener('resize', reposition, { passive: true });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!dialMenu.contains(e.target) && e.target !== dialBtn && !dialBtn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Init hidden field
+  syncHidden();
+})();
+</script>
+<script src="/js/form.js"></script>
+</body>
+</html>

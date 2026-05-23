@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Peterson Care Solutions</title>
+  <meta name="description" content="Get in touch with Peterson Care Solutions. We're here to answer your questions about caregiver recruitment for Canada and the UK." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#eff8ff',
+              100: '#dbeffe',
+              500: '#3b97f3',
+              600: '#2579e8',
+              700: '#1d62d5',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; }
+
+    .input-field {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.625rem;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
+      color: #1e293b;
+      font-family: inherit;
+    }
+    .input-field:focus {
+      border-color: #3b97f3;
+      box-shadow: 0 0 0 3px rgba(59,151,243,0.12);
+    }
+    .input-field.error { border-color: #ef4444; }
+
+    .field-error {
+      color: #ef4444;
+      font-size: 0.8125rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+
+    label { font-weight: 500; font-size: 0.875rem; color: #374151; }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  {{> topnavbar}}
+
+  <main class="min-h-screen pt-24 pb-20 px-5">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Page header -->
+      <div class="text-center mb-12">
+        <h1 class="text-slate-800 text-3xl md:text-4xl mb-3">Contact Us</h1>
+        <p class="text-slate-500 text-base max-w-md mx-auto">Have a question or need more information? We'd love to hear from you. Our team typically responds within one business day.</p>
+      </div>
+
+      <!-- Content -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+
+        <!-- Contact form -->
+        <div class="md:col-span-3 border border-slate-100 rounded-2xl p-6">
+          <h2 class="text-slate-800 text-lg mb-5">Send us a message</h2>
+
+          <form id="contact-form" novalidate>
+            <div class="flex flex-col gap-4">
+
+              <div>
+                <label for="c_name" class="block mb-1">Full Name *</label>
+                <input type="text" id="c_name" name="name" class="input-field" placeholder="e.g. Amara Osei" autocomplete="name" />
+                <p class="field-error" id="err-c_name">Please enter your name.</p>
+              </div>
+
+              <div>
+                <label for="c_email" class="block mb-1">Email Address *</label>
+                <input type="email" id="c_email" name="email" class="input-field" placeholder="you@example.com" autocomplete="email" />
+                <p class="field-error" id="err-c_email">Please enter a valid email address.</p>
+              </div>
+
+              <div>
+                <label for="c_subject" class="block mb-1">Subject *</label>
+                <input type="text" id="c_subject" name="subject" class="input-field" placeholder="e.g. Question about visa requirements" />
+                <p class="field-error" id="err-c_subject">Please enter a subject.</p>
+              </div>
+
+              <div>
+                <label for="c_message" class="block mb-1">Message *</label>
+                <textarea id="c_message" name="message" rows="5" class="input-field" style="resize:vertical;" placeholder="Write your message here…"></textarea>
+                <p class="field-error" id="err-c_message">Please enter your message.</p>
+              </div>
+
+              <button type="submit" id="contact-submit" class="w-full py-3 rounded-lg text-sm font-semibold text-white transition-colors duration-150" style="background:#2579e8;" onmouseover="this.style.background='#1d62d5'" onmouseout="this.style.background='#2579e8'">
+                Send Message
+              </button>
+
+              <!-- Success state -->
+              <div id="contact-success" class="hidden text-center py-3">
+                <p class="text-sm font-medium text-green-600">Message sent! We'll get back to you within one business day.</p>
+              </div>
+
+              <!-- Error state -->
+              <div id="contact-error" class="hidden text-center py-3">
+                <p class="text-sm text-red-500">Something went wrong. Please try again or email us directly.</p>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+        <!-- Contact info -->
+        <div class="md:col-span-2">
+          <div class="border border-slate-100 rounded-2xl p-6">
+            <p class="text-slate-800 font-semibold text-sm mb-4">Contact Info</p>
+            <div class="flex flex-col gap-3">
+
+              <!-- WhatsApp -->
+              <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-brand-whatsapp w-5 h-5 flex-shrink-0 text-green-500"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.497 4.409a10 10 0 0 1 -10.36 16.828l-.223 -.098l-4.759 .849l-.11 .011a1 1 0 0 1 -.11 0l-.102 -.013l-.108 -.024l-.105 -.037l-.099 -.047l-.093 -.058l-.014 -.011l-.012 -.007l-.086 -.073l-.077 -.08l-.067 -.088l-.056 -.094l-.034 -.07l-.04 -.108l-.028 -.128l-.012 -.102a1 1 0 0 1 0 -.125l.012 -.1l.024 -.11l.045 -.122l1.433 -3.304l-.009 -.014a10 10 0 0 1 1.549 -12.454l.215 -.203a10 10 0 0 1 13.226 -.217m-8.997 3.09a1.5 1.5 0 0 0 -1.5 1.5v1a6 6 0 0 0 6 6h1a1.5 1.5 0 0 0 0 -3h-1l-.144 .007a1.5 1.5 0 0 0 -1.128 .697l-.042 .074l-.022 -.007a4.01 4.01 0 0 1 -2.435 -2.435l-.008 -.023l.075 -.041a1.5 1.5 0 0 0 .704 -1.272v-1a1.5 1.5 0 0 0 -1.5 -1.5" /></svg>
+                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="text-slate-800 text-sm hover:text-green-600 transition-colors">+1 (234) 567-890</a>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-mail w-5 h-5 flex-shrink-0 text-slate-800"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z" /><path d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z" /></svg>
+                <a href="mailto:info@petersoncaresolutions.com" class="text-slate-800 text-sm hover:text-brand-600 transition-colors break-all">info@petersoncaresolutions.com</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  {{> footer}}
+
+<script>
+  (function () {
+    const form    = document.getElementById('contact-form');
+    const submit  = document.getElementById('contact-submit');
+    const success = document.getElementById('contact-success');
+    const errBanner = document.getElementById('contact-error');
+
+    function getVal(id) { return document.getElementById(id).value.trim(); }
+
+    function setError(id, show) {
+      const el = document.getElementById('err-' + id);
+      const input = document.getElementById(id);
+      if (show) {
+        el.classList.add('visible');
+        input.classList.add('error');
+      } else {
+        el.classList.remove('visible');
+        input.classList.remove('error');
+      }
+    }
+
+    function validate() {
+      let valid = true;
+      if (getVal('c_name').length < 2)                            { setError('c_name', true);    valid = false; } else { setError('c_name', false); }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(getVal('c_email'))) { setError('c_email', true);   valid = false; } else { setError('c_email', false); }
+      if (getVal('c_subject').length < 2)                         { setError('c_subject', true); valid = false; } else { setError('c_subject', false); }
+      if (getVal('c_message').length < 10)                        { setError('c_message', true); valid = false; } else { setError('c_message', false); }
+      return valid;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+      success.classList.add('hidden');
+      errBanner.classList.add('hidden');
+
+      try {
+        const res = await fetch('/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name:    getVal('c_name'),
+            email:   getVal('c_email'),
+            subject: getVal('c_subject'),
+            message: getVal('c_message'),
+          }),
+        });
+
+        if (res.ok) {
+          form.reset();
+          success.classList.remove('hidden');
+        } else {
+          errBanner.classList.remove('hidden');
+        }
+      } catch {
+        errBanner.classList.remove('hidden');
+      } finally {
+        submit.disabled = false;
+        submit.textContent = 'Send Message';
+      }
+    });
+
+    // Clear errors on input
+    ['c_name', 'c_email', 'c_subject', 'c_message'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => setError(id, false));
+    });
+  })();
+</script>
+
+</body>
+</html>

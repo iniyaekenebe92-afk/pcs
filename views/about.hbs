@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Peterson Care Solutions</title>
+  <meta name="description" content="Learn who we are, our mission, and how Peterson Care Solutions connects skilled caregivers from Africa and Asia with verified employers in Canada and the UK." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#eff8ff',
+              100: '#dbeffe',
+              500: '#3b97f3',
+              600: '#2579e8',
+              700: '#1d62d5',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  {{> topnavbar}}
+
+  <main class="min-h-screen pt-24 pb-20 px-5">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-slate-800 text-3xl md:text-4xl mb-3">About Peterson Care Solutions</h1>
+        <p class="text-slate-500 text-base max-w-md mx-auto">A recruitment partner built on transparency, dignity, and a genuine commitment to caregivers and the families they serve.</p>
+      </div>
+
+      <!-- Sections -->
+      <div class="space-y-10">
+
+        <!-- Who We Are -->
+        <div class="border border-slate-100 rounded-2xl px-6 py-8">
+          <h2 class="text-slate-800 text-xl md:text-2xl mb-3">Who We Are</h2>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Peterson Care Solutions is an international caregiver recruitment agency specialising in placing skilled home care and support workers from Africa and Asia with verified employers in Canada and the United Kingdom. We were founded on the belief that compassionate caregivers deserve fair, transparent pathways to build careers abroad — and that families deserve trusted, qualified professionals in their homes.
+          </p>
+          <p class="text-slate-600 text-sm leading-relaxed mt-4">
+            We work exclusively with pre-screened employers who meet legal employment standards in their respective countries. Every placement we facilitate is built on mutual respect — for the caregiver's rights, the employer's needs, and the people receiving care.
+          </p>
+        </div>
+
+        <!-- Our Mission -->
+        <div class="border border-slate-100 rounded-2xl px-6 py-8">
+          <h2 class="text-slate-800 text-xl md:text-2xl mb-3">Our Mission</h2>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            To bridge the global gap in professional home care by connecting talented caregivers from developing economies with ethical employers in high-demand markets — creating life-changing opportunities for workers and meaningful support for families.
+          </p>
+        </div>
+
+        <!-- Our Vision -->
+        <div class="border border-slate-100 rounded-2xl px-6 py-8">
+          <h2 class="text-slate-800 text-xl md:text-2xl mb-3">Our Vision</h2>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            A world where skilled caregivers are recognised as essential global professionals — recruited ethically, paid fairly, and supported throughout every step of their international career journey.
+          </p>
+        </div>
+
+        <!-- What We Do -->
+        <div class="border border-slate-100 rounded-2xl px-6 py-8">
+          <h2 class="text-slate-800 text-xl md:text-2xl mb-3">What We Do</h2>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            We manage the full recruitment cycle — from receiving and reviewing caregiver applications, to shortlisting and matching candidates with suitable employers, coordinating interviews, and providing structured guidance through the visa and immigration process.
+          </p>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li class="flex items-start gap-2">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0 mt-1.5"></span>
+              Free application and candidate review for all caregivers
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0 mt-1.5"></span>
+              Matching with verified, legally compliant employers
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0 mt-1.5"></span>
+              Visa guidance and document support for Canada and the UK
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-brand-500 flex-shrink-0 mt-1.5"></span>
+              Ongoing communication from application to arrival
+            </li>
+          </ul>
+        </div>
+
+        <!-- Our Values -->
+        <div class="border border-slate-100 rounded-2xl px-6 py-8">
+          <h2 class="text-slate-800 text-xl md:text-2xl mb-3">Our Values</h2>
+          <div class="space-y-4">
+            <div>
+              <p class="text-slate-800 text-sm font-semibold mb-1">Transparency</p>
+              <p class="text-slate-600 text-sm leading-relaxed">We never charge candidates recruitment fees. We are clear about timelines, expectations, and limitations at every stage. No hidden costs, no empty promises.</p>
+            </div>
+            <div>
+              <p class="text-slate-800 text-sm font-semibold mb-1">Dignity</p>
+              <p class="text-slate-600 text-sm leading-relaxed">Every caregiver who applies is treated with respect. We do not work with employers whose practices fall below the employment standards of Canada or the UK.</p>
+            </div>
+            <div>
+              <p class="text-slate-800 text-sm font-semibold mb-1">Integrity</p>
+              <p class="text-slate-600 text-sm leading-relaxed">We only recommend pathways we believe in. If a candidate is not a strong match for current openings, we say so honestly rather than raise false hopes.</p>
+            </div>
+            <div>
+              <p class="text-slate-800 text-sm font-semibold mb-1">Impact</p>
+              <p class="text-slate-600 text-sm leading-relaxed">We measure our success by the number of caregivers who secure stable, lawful employment abroad — and the families whose lives improve as a result.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Our Commitment -->
+        <div class="border border-slate-100 rounded-2xl px-6 py-8">
+          <h2 class="text-slate-800 text-xl md:text-2xl mb-3">Our Commitment to Ethical Recruitment</h2>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Peterson Care Solutions operates in accordance with ethical international recruitment standards. We do not engage in practices that could place candidates in exploitative or unsafe situations. We advocate for fair wages, lawful contracts, and appropriate working conditions for every caregiver we place.
+          </p>
+          <p class="text-slate-600 text-sm leading-relaxed mt-4">
+            Candidates are never under obligation until they formally accept a job offer. You may withdraw at any stage of the process without penalty.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-10 text-center bg-slate-900 rounded-2xl px-6 py-10">
+        <p class="text-white text-lg font-semibold mb-2">Ready to take the next step?</p>
+        <p class="text-white/60 text-sm mb-6 max-w-xs mx-auto">Submit a free application and a member of our team will be in touch within 3–5 business days.</p>
+        <a href="/#apply" class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-2.5 rounded-lg border border-white/30 hover:bg-white hover:text-slate-900 transition-colors duration-200">
+          Apply Now — It's Free
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  {{> footer}}
+
+</body>
+</html>

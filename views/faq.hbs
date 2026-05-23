@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Peterson Care Solutions</title>
+  <meta name="description" content="Answers to common questions about applying to work as a caregiver in Canada and the UK through Peterson Care Solutions." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#eff8ff',
+              100: '#dbeffe',
+              500: '#3b97f3',
+              600: '#2579e8',
+              700: '#1d62d5',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; }
+
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    .faq-answer.open {
+      grid-template-rows: 1fr;
+    }
+    .faq-answer > div {
+      overflow: hidden;
+    }
+
+    .faq-chevron-down,
+    .faq-chevron-up {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  {{> topnavbar}}
+
+  <!-- Page content -->
+  <main class="min-h-screen pt-24 pb-20 px-5">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-slate-800 text-3xl md:text-4xl mb-3">Frequently Asked Questions</h1>
+        <p class="text-slate-500 text-base max-w-md mx-auto">Everything you need to know about applying and working as a caregiver through Peterson Care Solutions.</p>
+      </div>
+
+      <!-- Accordion -->
+      <div class="divide-y divide-slate-100 border border-slate-100 rounded-2xl overflow-hidden">
+
+        <!-- Q1 -->
+        <div class="faq-item" id="faq-1">
+          <button onclick="toggleFaq('faq-1')" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors duration-150">
+            <span class="text-slate-800 font-semibold text-sm md:text-base">Who is eligible to apply?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="faq-chevron-down icon icon-tabler icons-tabler-filled icon-tabler-chevron-down w-5 h-5 text-slate-400 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.707 8.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1 -1.414 0l-6 -6a1 1 0 0 1 1.414 -1.414l5.293 5.293l5.293 -5.293a1 1 0 0 1 1.414 0" /></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron-up icon icon-tabler icons-tabler-outline icon-tabler-chevron-up w-5 h-5 text-slate-400 flex-shrink-0 hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+          </button>
+          <div class="faq-answer" id="faq-1-answer">
+            <div>
+              <p class="px-6 pb-5 text-slate-800 text-sm leading-relaxed">
+                We welcome applications from caregivers and support workers based in Africa and Asia. You should have at least one year of hands-on caregiving experience — whether in a home, hospital, or care facility — and a genuine desire to build a career abroad. A valid passport and basic English proficiency are required.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item" id="faq-2">
+          <button onclick="toggleFaq('faq-2')" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors duration-150">
+            <span class="text-slate-800 font-semibold text-sm md:text-base">Is there a fee to apply?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="faq-chevron-down icon icon-tabler icons-tabler-filled icon-tabler-chevron-down w-5 h-5 text-slate-400 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.707 8.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1 -1.414 0l-6 -6a1 1 0 0 1 1.414 -1.414l5.293 5.293l5.293 -5.293a1 1 0 0 1 1.414 0" /></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron-up icon icon-tabler icons-tabler-outline icon-tabler-chevron-up w-5 h-5 text-slate-400 flex-shrink-0 hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+          </button>
+          <div class="faq-answer" id="faq-2-answer">
+            <div>
+              <p class="px-6 pb-5 text-slate-800 text-sm leading-relaxed">
+                No. Submitting your application is completely free. We are paid by the employers we partner with, not by candidates. You will never be asked to pay a recruitment fee at any stage of the process.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item" id="faq-3">
+          <button onclick="toggleFaq('faq-3')" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors duration-150">
+            <span class="text-slate-800 font-semibold text-sm md:text-base">Which countries can I work in?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="faq-chevron-down icon icon-tabler icons-tabler-filled icon-tabler-chevron-down w-5 h-5 text-slate-400 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.707 8.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1 -1.414 0l-6 -6a1 1 0 0 1 1.414 -1.414l5.293 5.293l5.293 -5.293a1 1 0 0 1 1.414 0" /></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron-up icon icon-tabler icons-tabler-outline icon-tabler-chevron-up w-5 h-5 text-slate-400 flex-shrink-0 hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+          </button>
+          <div class="faq-answer" id="faq-3-answer">
+            <div>
+              <p class="px-6 pb-5 text-slate-800 text-sm leading-relaxed">
+                We currently place caregivers with verified home care employers in <strong class="text-slate-700 font-medium">Canada</strong> and the <strong class="text-slate-700 font-medium">United Kingdom</strong>. Both destinations offer structured pathways to permanent residency for eligible caregivers over time.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item" id="faq-4">
+          <button onclick="toggleFaq('faq-4')" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors duration-150">
+            <span class="text-slate-800 font-semibold text-sm md:text-base">How long does the process take?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="faq-chevron-down icon icon-tabler icons-tabler-filled icon-tabler-chevron-down w-5 h-5 text-slate-400 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.707 8.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1 -1.414 0l-6 -6a1 1 0 0 1 1.414 -1.414l5.293 5.293l5.293 -5.293a1 1 0 0 1 1.414 0" /></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron-up icon icon-tabler icons-tabler-outline icon-tabler-chevron-up w-5 h-5 text-slate-400 flex-shrink-0 hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+          </button>
+          <div class="faq-answer" id="faq-4-answer">
+            <div>
+              <p class="px-6 pb-5 text-slate-800 text-sm leading-relaxed">
+                After you submit your application, a recruiter will reach out within 3–5 business days to discuss your profile. Matching, employer interviews, and visa processing typically take between 3 and 9 months depending on the destination country and your individual circumstances.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item" id="faq-5">
+          <button onclick="toggleFaq('faq-5')" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors duration-150">
+            <span class="text-slate-800 font-semibold text-sm md:text-base">Do I need a job offer before applying for a visa?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="faq-chevron-down icon icon-tabler icons-tabler-filled icon-tabler-chevron-down w-5 h-5 text-slate-400 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.707 8.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1 -1.414 0l-6 -6a1 1 0 0 1 1.414 -1.414l5.293 5.293l5.293 -5.293a1 1 0 0 1 1.414 0" /></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron-up icon icon-tabler icons-tabler-outline icon-tabler-chevron-up w-5 h-5 text-slate-400 flex-shrink-0 hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+          </button>
+          <div class="faq-answer" id="faq-5-answer">
+            <div>
+              <p class="px-6 pb-5 text-slate-800 text-sm leading-relaxed">
+                Yes. Both Canada and the UK require a confirmed employer job offer before a work visa can be sponsored. We handle the employer matching process for you — once an employer selects your profile and extends an offer, we will guide you through the visa application steps.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="faq-item" id="faq-6">
+          <button onclick="toggleFaq('faq-6')" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors duration-150">
+            <span class="text-slate-800 font-semibold text-sm md:text-base">What documents will I need?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="faq-chevron-down icon icon-tabler icons-tabler-filled icon-tabler-chevron-down w-5 h-5 text-slate-400 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.707 8.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1 -1.414 0l-6 -6a1 1 0 0 1 1.414 -1.414l5.293 5.293l5.293 -5.293a1 1 0 0 1 1.414 0" /></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron-up icon icon-tabler icons-tabler-outline icon-tabler-chevron-up w-5 h-5 text-slate-400 flex-shrink-0 hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+          </button>
+          <div class="faq-answer" id="faq-6-answer">
+            <div>
+              <p class="px-6 pb-5 text-slate-800 text-sm leading-relaxed">
+                You will typically need a valid international passport, updated CV or résumé, proof of caregiving qualifications or certificates, employment reference letters, and a recent passport photograph. Additional documents such as police clearance or medical certificates may be required depending on your destination.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="faq-item" id="faq-7">
+          <button onclick="toggleFaq('faq-7')" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors duration-150">
+            <span class="text-slate-800 font-semibold text-sm md:text-base">Will Peterson Care Solutions help with the visa application?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="faq-chevron-down icon icon-tabler icons-tabler-filled icon-tabler-chevron-down w-5 h-5 text-slate-400 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.707 8.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1 -1.414 0l-6 -6a1 1 0 0 1 1.414 -1.414l5.293 5.293l5.293 -5.293a1 1 0 0 1 1.414 0" /></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron-up icon icon-tabler icons-tabler-outline icon-tabler-chevron-up w-5 h-5 text-slate-400 flex-shrink-0 hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+          </button>
+          <div class="faq-answer" id="faq-7-answer">
+            <div>
+              <p class="px-6 pb-5 text-slate-800 text-sm leading-relaxed">
+                We provide guidance and support throughout the visa process, including document checklists and step-by-step advice. We do not act as a licensed immigration lawyer, so for complex legal matters we may refer you to a registered immigration consultant.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="faq-item" id="faq-8">
+          <button onclick="toggleFaq('faq-8')" class="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors duration-150">
+            <span class="text-slate-800 font-semibold text-sm md:text-base">What happens after I submit my application?</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="faq-chevron-down icon icon-tabler icons-tabler-filled icon-tabler-chevron-down w-5 h-5 text-slate-400 flex-shrink-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.707 8.293a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1 -1.414 0l-6 -6a1 1 0 0 1 1.414 -1.414l5.293 5.293l5.293 -5.293a1 1 0 0 1 1.414 0" /></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron-up icon icon-tabler icons-tabler-outline icon-tabler-chevron-up w-5 h-5 text-slate-400 flex-shrink-0 hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15l6 -6l6 6" /></svg>
+          </button>
+          <div class="faq-answer" id="faq-8-answer">
+            <div>
+              <p class="px-6 pb-5 text-slate-800 text-sm leading-relaxed">
+                Our team reviews every application and will contact you within 3–5 business days via WhatsApp or email. We will verify your details, discuss your experience and preferences, and begin searching for suitable employer matches. You are under no obligation at any point until you formally accept an offer.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Still have questions CTA -->
+      <div class="mt-10 text-center bg-slate-900 rounded-2xl px-6 py-10">
+        <p class="text-white text-lg font-semibold mb-2">Still have questions?</p>
+        <p class="text-white/60 text-sm mb-6 max-w-xs mx-auto">Our team is happy to help. Reach out and we'll get back to you promptly.</p>
+        <a href="/contact" class="inline-flex items-center gap-2 text-sm font-semibold text-white px-6 py-2.5 rounded-lg border border-white/30 hover:bg-white hover:text-slate-900 transition-colors duration-200">
+          Contact Us
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  {{> footer}}
+
+<script>
+  function toggleFaq(id) {
+    const item = document.getElementById(id);
+    const answer = document.getElementById(id + '-answer');
+    const isOpen = item.classList.contains('open');
+
+    // Close all open items
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      document.getElementById(el.id + '-answer').classList.remove('open');
+      el.querySelector('.faq-chevron-down').classList.remove('hidden');
+      el.querySelector('.faq-chevron-up').classList.add('hidden');
+    });
+
+    // Open clicked item if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.classList.add('open');
+      item.querySelector('.faq-chevron-down').classList.add('hidden');
+      item.querySelector('.faq-chevron-up').classList.remove('hidden');
+    }
+  }
+</script>
+
+</body>
+</html>

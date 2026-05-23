@@ -1,0 +1,40 @@
+{{!--
+  Reusable dropdown menu partial.
+  Usage: {{> dropdown-menu triggerId="gender-trigger" menuId="gender-menu" hiddenId="gender" items=genderItems placeholder="Select gender"}}
+  Rendered server-side OR driven entirely by the JS initDropdown() helper on the client.
+--}}
+<div class="dropdown-wrapper relative" id="{{menuId}}-wrapper">
+  <!-- Trigger button (acts like a select field) -->
+  <button
+    type="button"
+    id="{{triggerId}}"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    class="input-field flex items-center justify-between text-left w-full dropdown-trigger"
+    data-menu="{{menuId}}"
+    data-hidden="{{hiddenId}}"
+  >
+    <span class="dropdown-label text-slate-400">{{placeholder}}</span>
+    <svg class="dropdown-chevron w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </button>
+
+  <!-- Drop panel -->
+  <ul
+    id="{{menuId}}"
+    role="listbox"
+    class="dropdown-menu absolute left-0 right-0 top-full mt-1.5 bg-white border border-slate-200 rounded-xl shadow-lg z-50 overflow-hidden hidden"
+  >
+    {{#each items}}
+    <li
+      role="option"
+      aria-selected="false"
+      data-value="{{value}}"
+      class="dropdown-item px-4 py-2.5 text-sm text-slate-700 cursor-pointer hover:bg-brand-50 hover:text-brand-700 transition-colors"
+    >
+      {{label}}
+    </li>
+    {{/each}}
+  </ul>
+</div>
