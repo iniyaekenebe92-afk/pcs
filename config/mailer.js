@@ -1,6 +1,10 @@
 const { Resend } = require('resend');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let _resend = null;
+function getResend() {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
+  return _resend;
+}
 
 const FROM = process.env.RESEND_FROM;
 
@@ -90,7 +94,7 @@ function applicantEmailHtml(data) {
 
 async function sendApplicationNotification(data) {
   console.log('[mailer] Sending applicant confirmation to:', data.email);
-  const applicantResult = await resend.emails.send({
+  const applicantResult = await getResend().emails.send({
     from: FROM,
     to: data.email,
     subject: `Application Received - Peterson Care Solutions`,
@@ -103,7 +107,7 @@ async function sendApplicationNotification(data) {
   }
 
   console.log('[mailer] Sending admin notification to:', process.env.ADMIN_EMAIL);
-  const adminResult = await resend.emails.send({
+  const adminResult = await getResend().emails.send({
     from: FROM,
     to: process.env.ADMIN_EMAIL,
     subject: `New Caregiver Application - ${data.full_name}`,
