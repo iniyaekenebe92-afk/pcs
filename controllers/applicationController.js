@@ -1,7 +1,14 @@
+const fs = require('fs');
+const path = require('path');
 const { validationResult } = require('express-validator');
 const supabase = require('../config/supabase');
 const { sendApplicationNotification } = require('../config/mailer');
 const { Country } = require('country-state-city');
+
+const partnersDir = path.join(__dirname, '../public/partners');
+const partners = fs.existsSync(partnersDir)
+  ? fs.readdirSync(partnersDir).filter(f => /\.(png|jpg|jpeg|svg|webp)$/i.test(f))
+  : [];
 
 // Build once at module load — isoCode is the 2-letter code flagcdn uses
 const countries = Country.getAllCountries().map(c => ({
@@ -31,6 +38,7 @@ exports.showAbout = (req, res) => {
 exports.showLanding = (req, res) => {
   res.render('landing', {
     countries,
+    partners,
     occupationItems: occupations,
     genderItems: [
       { value: 'male',   label: 'Male' },
@@ -84,6 +92,30 @@ exports.showLanding = (req, res) => {
       { value: 'has_visa',       label: 'Currently holds a valid visa' },
     ],
   });
+};
+
+exports.submitContact = async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  if (!name || !email || !subject || !message) {
+    return res.status(422).json({ success: false, message: 'All fields are required.' });
+  }
+
+  try {
+    const { error } = await supabase.from('contact_messages').insert([{
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      subject: subject.trim(),
+      message: message.trim(),
+    }]);
+
+    if (error) throw error;
+
+    return res.json({ success: true });
+  } catch (err) {
+    console.error('Contact submission error:', err);
+    return res.status(500).json({ success: false, message: 'Server error. Please try again.' });
+  }
 };
 
 exports.submitApplication = async (req, res) => {

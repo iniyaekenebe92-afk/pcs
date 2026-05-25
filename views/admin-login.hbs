@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login – Peterson Care Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#eff8ff',
+              100: '#dbeffe',
+              500: '#3b97f3',
+              600: '#2579e8',
+              700: '#1d62d5',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; }
+
+    .input-field {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.625rem;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
+      color: #1e293b;
+      font-family: inherit;
+    }
+    .input-field:focus {
+      border-color: #3b97f3;
+      box-shadow: 0 0 0 3px rgba(59,151,243,0.12);
+    }
+
+    label { font-weight: 500; font-size: 0.875rem; color: #374151; }
+  </style>
+</head>
+<body class="bg-white antialiased min-h-screen flex items-center justify-center px-5">
+
+  <div class="w-full max-w-sm">
+
+    <div class="text-center mb-8">
+      <img src="/img/logo_dark.png" alt="Peterson Care Solutions" class="h-12 w-auto mx-auto mb-6" />
+      <h1 class="text-slate-800 text-3xl mb-2">Admin Access</h1>
+    </div>
+
+    <div class="border border-slate-100 rounded-2xl p-6">
+
+      {{#if error}}
+        <div class="mb-5 rounded-lg px-4 py-3 bg-red-50 border border-red-100">
+          <p class="text-sm text-red-600">{{error}}</p>
+        </div>
+      {{/if}}
+
+      <form method="POST" action="/admin/login">
+        <div class="flex flex-col gap-4">
+          <div>
+            <label for="passcode" class="block mb-1">Passcode</label>
+            <input
+              type="password"
+              id="passcode"
+              name="passcode"
+              autofocus
+              required
+              placeholder="Enter admin passcode"
+              class="input-field"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3 rounded-lg text-sm font-semibold text-white transition-colors duration-150"
+            style="background:#2579e8;"
+            onmouseover="this.style.background='#1d62d5'"
+            onmouseout="this.style.background='#2579e8'"
+          >
+            Access Dashboard
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</body>
+</html>

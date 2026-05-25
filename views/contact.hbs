@@ -61,6 +61,7 @@
     .field-error.visible { display: block; }
 
     label { font-weight: 500; font-size: 0.875rem; color: #374151; }
+    label .req { color: #ef4444; }
   </style>
 </head>
 <body class="bg-white antialiased">
@@ -81,48 +82,57 @@
 
         <!-- Contact form -->
         <div class="md:col-span-3 border border-slate-100 rounded-2xl p-6">
-          <h2 class="text-slate-800 text-lg mb-5">Send us a message</h2>
+          <h2 id="contact-form-heading" class="text-slate-800 text-lg mb-5">Send us a message</h2>
+
+          <!-- Success card (hidden until sent) -->
+          <div id="contact-success" class="hidden flex flex-col items-center justify-center text-center py-10 gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="currentColor" class="text-green-500" style="color:#16a34a"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" /></svg>
+            <div>
+              <p class="text-slate-800 font-semibold text-base mb-1">Message sent!</p>
+              <p class="text-slate-500 text-sm max-w-xs mx-auto">Thanks for reaching out. We'll get back to you within one business day.</p>
+            </div>
+            <button id="contact-send-another" class="mt-2 text-sm font-medium hover:underline" style="color:#2579e8;">Send another message</button>
+          </div>
+
+          <!-- Error banner -->
+          <div id="contact-error" class="hidden mb-4 rounded-lg px-4 py-3 bg-red-50 border border-red-100">
+            <p class="text-sm text-red-600">Something went wrong. Please try again or email us directly.</p>
+          </div>
 
           <form id="contact-form" novalidate>
             <div class="flex flex-col gap-4">
 
               <div>
-                <label for="c_name" class="block mb-1">Full Name *</label>
+                <label for="c_name" class="block mb-1">Full Name <span class="req">*</span></label>
                 <input type="text" id="c_name" name="name" class="input-field" placeholder="e.g. Amara Osei" autocomplete="name" />
                 <p class="field-error" id="err-c_name">Please enter your name.</p>
               </div>
 
               <div>
-                <label for="c_email" class="block mb-1">Email Address *</label>
+                <label for="c_email" class="block mb-1">Email Address <span class="req">*</span></label>
                 <input type="email" id="c_email" name="email" class="input-field" placeholder="you@example.com" autocomplete="email" />
                 <p class="field-error" id="err-c_email">Please enter a valid email address.</p>
               </div>
 
               <div>
-                <label for="c_subject" class="block mb-1">Subject *</label>
+                <label for="c_subject" class="block mb-1">Subject <span class="req">*</span></label>
                 <input type="text" id="c_subject" name="subject" class="input-field" placeholder="e.g. Question about visa requirements" />
                 <p class="field-error" id="err-c_subject">Please enter a subject.</p>
               </div>
 
               <div>
-                <label for="c_message" class="block mb-1">Message *</label>
+                <label for="c_message" class="block mb-1">Message <span class="req">*</span></label>
                 <textarea id="c_message" name="message" rows="5" class="input-field" style="resize:vertical;" placeholder="Write your message here…"></textarea>
                 <p class="field-error" id="err-c_message">Please enter your message.</p>
               </div>
 
-              <button type="submit" id="contact-submit" class="w-full py-3 rounded-lg text-sm font-semibold text-white transition-colors duration-150" style="background:#2579e8;" onmouseover="this.style.background='#1d62d5'" onmouseout="this.style.background='#2579e8'">
-                Send Message
+              <button type="submit" id="contact-submit" class="w-full py-3 rounded-lg text-sm font-semibold text-white transition-colors duration-150 flex items-center justify-center gap-2" style="background:#2579e8;" onmouseover="this.style.background='#1d62d5'" onmouseout="this.style.background='#2579e8'">
+                <svg id="contact-spinner" class="hidden animate-spin w-4 h-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                </svg>
+                <span id="contact-submit-label">Send Message</span>
               </button>
-
-              <!-- Success state -->
-              <div id="contact-success" class="hidden text-center py-3">
-                <p class="text-sm font-medium text-green-600">Message sent! We'll get back to you within one business day.</p>
-              </div>
-
-              <!-- Error state -->
-              <div id="contact-error" class="hidden text-center py-3">
-                <p class="text-sm text-red-500">Something went wrong. Please try again or email us directly.</p>
-              </div>
 
             </div>
           </form>
@@ -137,13 +147,13 @@
               <!-- WhatsApp -->
               <div class="flex items-center gap-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-brand-whatsapp w-5 h-5 flex-shrink-0 text-green-500"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18.497 4.409a10 10 0 0 1 -10.36 16.828l-.223 -.098l-4.759 .849l-.11 .011a1 1 0 0 1 -.11 0l-.102 -.013l-.108 -.024l-.105 -.037l-.099 -.047l-.093 -.058l-.014 -.011l-.012 -.007l-.086 -.073l-.077 -.08l-.067 -.088l-.056 -.094l-.034 -.07l-.04 -.108l-.028 -.128l-.012 -.102a1 1 0 0 1 0 -.125l.012 -.1l.024 -.11l.045 -.122l1.433 -3.304l-.009 -.014a10 10 0 0 1 1.549 -12.454l.215 -.203a10 10 0 0 1 13.226 -.217m-8.997 3.09a1.5 1.5 0 0 0 -1.5 1.5v1a6 6 0 0 0 6 6h1a1.5 1.5 0 0 0 0 -3h-1l-.144 .007a1.5 1.5 0 0 0 -1.128 .697l-.042 .074l-.022 -.007a4.01 4.01 0 0 1 -2.435 -2.435l-.008 -.023l.075 -.041a1.5 1.5 0 0 0 .704 -1.272v-1a1.5 1.5 0 0 0 -1.5 -1.5" /></svg>
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="text-slate-800 text-sm hover:text-green-600 transition-colors">+1 (234) 567-890</a>
+                <a href="https://wa.me/17827177460" target="_blank" rel="noopener noreferrer" class="text-slate-800 text-sm hover:text-green-600 transition-colors">+1 (782) 717-7460</a>
               </div>
 
               <!-- Email -->
               <div class="flex items-center gap-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-mail w-5 h-5 flex-shrink-0 text-slate-800"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z" /><path d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z" /></svg>
-                <a href="mailto:info@petersoncaresolutions.com" class="text-slate-800 text-sm hover:text-brand-600 transition-colors break-all">info@petersoncaresolutions.com</a>
+                <a href="mailto:support@patersoncaresolutions.online" class="text-slate-800 text-sm hover:text-brand-600 transition-colors truncate min-w-0">support@patersoncaresolutions.online</a>
               </div>
 
             </div>
@@ -158,15 +168,18 @@
 
 <script>
   (function () {
-    const form    = document.getElementById('contact-form');
-    const submit  = document.getElementById('contact-submit');
-    const success = document.getElementById('contact-success');
-    const errBanner = document.getElementById('contact-error');
+    const form        = document.getElementById('contact-form');
+    const submit      = document.getElementById('contact-submit');
+    const success     = document.getElementById('contact-success');
+    const errBanner   = document.getElementById('contact-error');
+    const spinner     = document.getElementById('contact-spinner');
+    const sendAnother = document.getElementById('contact-send-another');
+    const submitLabel = document.getElementById('contact-submit-label');
 
     function getVal(id) { return document.getElementById(id).value.trim(); }
 
     function setError(id, show) {
-      const el = document.getElementById('err-' + id);
+      const el    = document.getElementById('err-' + id);
       const input = document.getElementById(id);
       if (show) {
         el.classList.add('visible');
@@ -186,13 +199,27 @@
       return valid;
     }
 
+    function showSuccess() {
+      form.classList.add('hidden');
+      errBanner.classList.add('hidden');
+      document.getElementById('contact-form-heading').classList.add('hidden');
+      success.classList.remove('hidden');
+    }
+
+    function resetToForm() {
+      success.classList.add('hidden');
+      document.getElementById('contact-form-heading').classList.remove('hidden');
+      form.classList.remove('hidden');
+      form.reset();
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!validate()) return;
 
       submit.disabled = true;
-      submit.textContent = 'Sending…';
-      success.classList.add('hidden');
+      spinner.classList.remove('hidden');
+      submitLabel.textContent = 'Sending…';
       errBanner.classList.add('hidden');
 
       try {
@@ -208,8 +235,7 @@
         });
 
         if (res.ok) {
-          form.reset();
-          success.classList.remove('hidden');
+          showSuccess();
         } else {
           errBanner.classList.remove('hidden');
         }
@@ -217,9 +243,12 @@
         errBanner.classList.remove('hidden');
       } finally {
         submit.disabled = false;
-        submit.textContent = 'Send Message';
+        spinner.classList.add('hidden');
+        submitLabel.textContent = 'Send Message';
       }
     });
+
+    sendAnother.addEventListener('click', resetToForm);
 
     // Clear errors on input
     ['c_name', 'c_email', 'c_subject', 'c_message'].forEach(id => {

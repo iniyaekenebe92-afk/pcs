@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
 const ctrl = require('../controllers/applicationController');
-const { showLanding, submitApplication, showSuccess, showFaq, showContact, showAbout } = require('../controllers/applicationController');
+const { showLanding, submitApplication, showSuccess, showFaq, showContact, showAbout, submitContact } = require('../controllers/applicationController');
 
 const validators = [
   body('full_name').trim().notEmpty().withMessage('Full name is required'),
@@ -25,6 +25,7 @@ router.post('/apply', validators, ctrl.submitApplication);
 router.get('/success', showSuccess);
 router.get('/faq', showFaq);
 router.get('/contact', showContact);
+router.post('/contact', submitContact);
 router.get('/about', showAbout);
 
 module.exports = router;

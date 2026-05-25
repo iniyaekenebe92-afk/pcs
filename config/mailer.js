@@ -1,14 +1,8 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT),
-  secure: process.env.SMTP_SECURE === 'true',
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const FROM = process.env.RESEND_FROM;
 
 function applicantEmailHtml(data) {
   return `
@@ -35,7 +29,7 @@ function applicantEmailHtml(data) {
 
           <!-- BODY -->
           <tr>
-            <td style="padding:40px;">
+            <td style="padding:40px 20px;">
 
               <h1 style="margin:0 0 24px 0;font-size:22px;font-weight:700;color:#0f172a;font-family:Georgia,serif;">Dear ${data.full_name},</h1>
 
@@ -95,16 +89,23 @@ function applicantEmailHtml(data) {
 }
 
 async function sendApplicationNotification(data) {
-  await transporter.sendMail({
-    from: `"Peterson Care Solutions" <${process.env.SMTP_USER}>`,
+  console.log('[mailer] Sending applicant confirmation to:', data.email);
+  const applicantResult = await resend.emails.send({
+    from: FROM,
     to: data.email,
     subject: `Application Received - Peterson Care Solutions`,
     html: applicantEmailHtml(data),
   });
+  if (applicantResult.error) {
+    console.error('[mailer] FAILED applicant email:', JSON.stringify(applicantResult.error));
+  } else {
+    console.log('[mailer] OK applicant email sent. ID:', applicantResult.data?.id);
+  }
 
-  await transporter.sendMail({
-    from: `"Peterson Care Solutions" <${process.env.SMTP_USER}>`,
-    to: process.env.SMTP_USER,
+  console.log('[mailer] Sending admin notification to:', process.env.ADMIN_EMAIL);
+  const adminResult = await resend.emails.send({
+    from: FROM,
+    to: process.env.ADMIN_EMAIL,
     subject: `New Caregiver Application - ${data.full_name}`,
     html: `
       <h2>New Application Received</h2>
@@ -116,6 +117,11 @@ async function sendApplicationNotification(data) {
       <p><strong>Experience:</strong> ${data.years_experience} years</p>
     `,
   });
+  if (adminResult.error) {
+    console.error('[mailer] FAILED admin email:', JSON.stringify(adminResult.error));
+  } else {
+    console.log('[mailer] OK admin email sent. ID:', adminResult.data?.id);
+  }
 }
 
 module.exports = { sendApplicationNotification };

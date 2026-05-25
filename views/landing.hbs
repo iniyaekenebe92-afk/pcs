@@ -139,12 +139,14 @@
     .summary-row:last-child { border-bottom: none; }
 
     .spinner {
-      width: 1.25rem; height: 1.25rem;
-      border: 2.5px solid rgba(255,255,255,0.4);
+      width: 1rem; height: 1rem;
+      border: 2px solid rgba(255,255,255,0.4);
       border-top-color: #fff;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -429,6 +431,22 @@
       cursor: pointer;
     }
     .ts-dropdown .ts-occupation-create:hover { background: #eff8ff; }
+
+    /* ── Partners marquee ── */
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-wrap {
+      overflow: hidden;
+      width: 100%;
+    }
   </style>
 </head>
 <body class="bg-white text-slate-800 antialiased">
@@ -450,7 +468,7 @@
 
       <!-- Text -->
       <div class="flex-1 text-center md:text-left fade-up">
-        <div class="flex justify-center mb-4"><img src="/img/hero.png" alt="Peterson Care Solutions" class="h-14 w-auto" /></div>
+        <div class="flex justify-center mb-4"><img src="/img/hero.png" alt="Peterson Care Solutions" class="h-16 w-auto" /></div>
         <h1 class="text-white text-3xl md:text-5xl leading-tight mb-5" style="text-shadow:0 2px 8px rgba(0,0,0,0.4)">
           Work as a Caregiver<br/>in Canada &amp; the UK
         </h1>
@@ -469,7 +487,7 @@
           <span class="text-white/90 text-sm font-medium">500+ Placements</span>
         </div>
 
-        <a href="#apply" class="btn-primary block w-full text-center hover:-translate-y-0.5 transition-transform duration-200" style="background:#C9922A;" onmouseover="this.style.background='#b57e22'" onmouseout="this.style.background='#C9922A'">
+        <a href="#apply" class="btn-primary block w-full text-center hover:-translate-y-0.5 transition-transform duration-200" style="background: #0ea5a0; color: #fff;" onmouseover="this.style.background='#0c9490'" onmouseout="this.style.background='#0ea5a0'">
           Apply Now — It's Free
         </a>
       </div>
@@ -703,7 +721,7 @@
             <label class="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" id="consent-checkbox" name="consented" value="true" class="mt-0.5 w-4 h-4 accent-brand-600 flex-shrink-0" />
               <span class="text-sm text-slate-600 leading-relaxed">
-                I confirm that the information provided is accurate and I consent to Peterson Care Solutions contacting me regarding caregiver opportunities in Canada and/or the United Kingdom. *
+                I confirm that the information provided is accurate and I consent to Peterson Care Solutions contacting me regarding caregiver opportunities in Canada and/or the United Kingdom. <span class="req">*</span>
               </span>
             </label>
             <p class="field-error" id="err-consented">You must agree to the consent statement.</p>
@@ -728,8 +746,8 @@
           </button>
           <button type="submit" id="btn-submit" class="btn-primary min-w-0 flex-shrink flex-grow" style="display:none">
             <span class="flex items-center justify-center gap-2">
+              <span id="submit-spinner" class="spinner mr-1" style="display:none"></span>
               <span id="submit-label">Submit</span>
-              <span id="submit-spinner" class="spinner ml-1" style="display:none"></span>
             </span>
           </button>
         </div>
@@ -743,6 +761,43 @@
 
   </div>
 </section>
+
+<!-- ─────────────────────────── PARTNERS ─────────────────────────── -->
+{{#if partners.length}}
+<section class="py-12 bg-slate-50 border-t border-slate-100">
+  <div class="text-center mb-8 px-5">
+    <p class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Our Partners</p>
+    <h2 class="text-xl md:text-2xl text-slate-700">Trusted by Leading Care Employers</h2>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      {{! First copy }}
+      {{#each partners}}
+      <div class="flex items-center justify-center px-10 flex-shrink-0">
+        <img
+          src="/partners/{{this}}"
+          alt="Partner logo"
+          class="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+          loading="lazy"
+        />
+      </div>
+      {{/each}}
+      {{! Duplicate for seamless loop }}
+      {{#each partners}}
+      <div class="flex items-center justify-center px-10 flex-shrink-0">
+        <img
+          src="/partners/{{this}}"
+          alt="Partner logo"
+          class="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100"
+          loading="lazy"
+        />
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}
 
 <!-- ─────────────────────────── FOOTER ─────────────────────────── -->
 {{> footer}}
@@ -865,7 +920,7 @@
     ['zw','263','Zimbabwe'],
   ];
 
-  let selected = COUNTRIES.find(c => c[0] === 'ng');
+  let selected = COUNTRIES.find(c => c[0] === 'ng'); // fallback default
   const dialBtn    = document.getElementById('dial-btn');
   const dialFlag   = document.getElementById('dial-flag');
   const dialCode   = document.getElementById('dial-code');
@@ -966,6 +1021,22 @@
 
   // Init hidden field
   syncHidden();
+
+  // Auto-detect country via IP geolocation (silent, non-blocking)
+  (function autoDetectDialCode() {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000);
+    fetch('https://ipapi.co/json/', { signal: controller.signal })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        clearTimeout(timeout);
+        const iso = data?.country_code?.toLowerCase();
+        if (iso && COUNTRIES.some(c => c[0] === iso)) {
+          selectCountry(iso);
+        }
+      })
+      .catch(() => { /* silently keep fallback */ });
+  })();
 })();
 </script>
 <script src="/js/form.js"></script>

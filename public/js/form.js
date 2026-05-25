@@ -307,7 +307,7 @@
       errorBanner.classList.remove('hidden');
     } finally {
       btnSubmit.disabled    = false;
-      label.textContent     = 'Submit Application';
+      label.textContent     = 'Submit';
       spinner.style.display = 'none';
     }
   });

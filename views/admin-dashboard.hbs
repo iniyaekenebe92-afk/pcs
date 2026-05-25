@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard – Peterson Care Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['DM Serif Display', 'Georgia', 'serif'],
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50:  '#eff8ff',
+              100: '#dbeffe',
+              500: '#3b97f3',
+              600: '#2579e8',
+              700: '#1d62d5',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    h1, h2, h3, .font-serif { font-family: 'DM Serif Display', Georgia, serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen antialiased" x-data="{ tab: 'applications' }">
+
+  {{> topnavbar}}
+
+  <main class="max-w-5xl mx-auto px-5 pt-20 pb-6 space-y-6">
+
+    <!-- Stat Cards -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-white rounded-2xl border border-slate-100 p-5">
+        <p class="text-xs font-medium text-slate-400 uppercase tracking-widest mb-1">Applications</p>
+        <p class="text-3xl" style="color:#2579e8;font-family:'DM Serif Display',serif;">{{appCount}}</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-100 p-5">
+        <p class="text-xs font-medium text-slate-400 uppercase tracking-widest mb-1">Messages</p>
+        <p class="text-3xl" style="color:#2579e8;font-family:'DM Serif Display',serif;">{{contactCount}}</p>
+      </div>
+    </div>
+
+    <!-- Tab Nav — full width -->
+    <div class="flex gap-2 w-full">
+      <button
+        @click="tab = 'applications'"
+        :style="tab === 'applications' ? 'background:#2579e8;color:#fff;' : 'background:#cbd5e1;color:#475569;'"
+        class="flex-1 py-2.5 rounded-full text-sm font-semibold transition-colors duration-150"
+      >
+        Applications
+      </button>
+      <button
+        @click="tab = 'contacts'"
+        :style="tab === 'contacts' ? 'background:#2579e8;color:#fff;' : 'background:#cbd5e1;color:#475569;'"
+        class="flex-1 py-2.5 rounded-full text-sm font-semibold transition-colors duration-150"
+      >
+        Contact Messages
+      </button>
+    </div>
+
+    <!-- Applications Tab -->
+    <div x-show="tab === 'applications'" x-cloak>
+      {{#if applications.length}}
+        <div class="bg-white rounded-2xl border border-slate-100 divide-y divide-slate-100">
+          {{#each applications}}
+          <details class="group">
+            <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none">
+              <div>
+                <p class="font-semibold text-slate-800 text-sm">{{this.full_name}}</p>
+                <p class="text-xs text-slate-400 mt-0.5">{{this.email}}</p>
+              </div>
+              <svg class="w-4 h-4 text-slate-300 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-5 pb-5 pt-3 border-t border-slate-100 text-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Nationality</p>
+                <p class="text-slate-600 text-right">{{this.nationality}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Preferred Destination</p>
+                <p class="text-slate-600 text-right">{{this.preferred_destination}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Caregiving Experience</p>
+                <p class="text-slate-600 text-right">{{this.caregiving_experience}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Gender</p>
+                <p class="text-slate-600 capitalize text-right">{{this.gender}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">WhatsApp</p>
+                <p class="text-slate-600 text-right">{{this.whatsapp}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Current Country</p>
+                <p class="text-slate-600 text-right">{{this.current_country}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Education</p>
+                <p class="text-slate-600 text-right">{{this.education_level}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Years Experience</p>
+                <p class="text-slate-600 text-right">{{this.years_experience}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">English</p>
+                <p class="text-slate-600 capitalize text-right">{{this.english_proficiency}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Passport</p>
+                <p class="text-slate-600 text-right">{{#if this.has_passport}}Yes{{else}}No{{/if}}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Travel History</p>
+                <p class="text-slate-600 text-right">{{this.travel_history}}</p>
+              </div>
+              {{#if this.certification}}
+              <div class="flex items-center justify-between">
+                <p class="text-slate-800" style="font-family:'DM Serif Display',serif;">Certification</p>
+                <p class="text-slate-600 text-right">{{this.certification}}</p>
+              </div>
+              {{/if}}
+              <p class="text-xs text-slate-300 app-time" data-ts="{{this.created_at}}">{{this.created_at}}</p>
+            </div>
+          </details>
+          {{/each}}
+        </div>
+      {{else}}
+        <div class="bg-white rounded-2xl border border-slate-100 p-10 text-center text-slate-400 text-sm">
+          No applications yet.
+        </div>
+      {{/if}}
+    </div>
+
+    <!-- Contact Messages Tab -->
+    <div x-show="tab === 'contacts'" x-cloak>
+      {{#if contacts.length}}
+        <div class="bg-white rounded-2xl border border-slate-100 divide-y divide-slate-100">
+          {{#each contacts}}
+          <details class="group">
+            <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none">
+              <div>
+                <p class="font-semibold text-slate-800 text-sm">{{this.name}}</p>
+                <p class="text-xs text-slate-400 mt-0.5">{{this.email}}</p>
+              </div>
+              <svg class="w-4 h-4 text-slate-300 flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <div class="px-5 pb-5 pt-3 border-t border-slate-100 space-y-4 text-sm">
+              <div>
+                <p class="text-slate-800 mb-1" style="font-family:'DM Serif Display',serif;">Subject</p>
+                <p class="text-slate-600">{{this.subject}}</p>
+              </div>
+              <div>
+                <p class="text-slate-800 mb-1" style="font-family:'DM Serif Display',serif;">Message</p>
+                <p class="text-slate-600 leading-relaxed">{{this.message}}</p>
+              </div>
+              <p class="text-xs text-slate-300 msg-time" data-ts="{{this.created_at}}">{{this.created_at}}</p>
+            </div>
+          </details>
+          {{/each}}
+        </div>
+      {{else}}
+        <div class="bg-white rounded-2xl border border-slate-100 p-10 text-center text-slate-400 text-sm">
+          No contact messages yet.
+        </div>
+      {{/if}}
+    </div>
+
+  </main>
+
+  <script>
+    document.querySelectorAll('.msg-time[data-ts], .app-time[data-ts]').forEach(el => {
+      const ts = el.dataset.ts;
+      if (!ts) return;
+      const d = new Date(ts);
+      if (isNaN(d)) return;
+      const day = d.toLocaleDateString('en-US', { weekday: 'long' });
+      const time = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+      el.textContent = `${day}, ${time}`;
+    });
+  </script>
+
+</body>
+</html>
